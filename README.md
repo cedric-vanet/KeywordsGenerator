@@ -1,11 +1,11 @@
-Keywords
+Keywords Generator
 ========
 
 Automatic keywords generator
 
 Exemple :
 
-$("#areainput").keywords({ attachto: $("#areakeywords"), tag: "b", min: 5, max: 30, words: 200, alertmax: false });
+$("#areainput").keywordsgenerator({ attachto: $("#areakeywords"), tag: "b", min: 5, max: 30, words: 200, alertmax: false });
 
 Default options :
  min: 4          - Characters number minimum for keyword
