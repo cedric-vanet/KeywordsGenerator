@@ -1,0 +1,94 @@
+
+<!DOCTYPE>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Balise HEAD -->
+<head>
+    
+<!-- Titre de la page -->
+<title>Keywords</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Declaration Jquery (Google) -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+<!-- Declaration du plugin Keywords -->
+<script type="text/javascript" src="keywords/jquery.keywords.min.js"></script>
+    
+</head>
+
+<!-- Javascript -->
+<script>
+  
+    $(function() {
+
+			$("#areainput").keywords({ attachto: $("#areakeywords"), tag: "b" });
+			
+			//Options par defaut :
+      // min: 4 - Nombre minimum de caractères pour le mot clé
+      // max": 25 - Nombre maximum de caractères pour le mot clé
+      // words": 50 - Nombre de mots clés maximum
+      // tag": null - Limité les mots clés sur un tag spécifiques (Exemple: strong, b, i, ...)
+      // alertmid": 40 - Nombre de mots pour l'alerte intermediaires
+      // alertmax": true - Activer ou desactiver l'alerte lorsqu'on atteint le nombre de mots clés maximum
+      // attachto": null - Elément de sotie du résultat, si null alors sortie en alert
+      // callback": null - Fonction lancé à la fin du traitement
+			
+    });
+	
+</script>
+
+
+<!-- body -->
+<body>
+
+<!-- Style -->
+<style>
+
+	body{
+		width:100%;
+		padding:40px;
+		background-color:#EEE;
+	}
+	
+	body div{
+		width:500px;
+		height:250px;
+	}
+
+	#areainput{
+		width:500px;
+		height:200px;
+	}
+	
+	#areakeywords{
+		width:500px;
+		height:200px;
+	}
+	
+</style>
+
+<!-- Titre -->
+<h1>Plugin Jquery : Keywords</h1>
+
+<!-- Descriptif -->
+<p>This plugin allows the generation of keywords from a text</p>
+
+<!-- Texte saisi -->
+<div>
+	<label for="areainput"><b>Write text</b></label>
+	<textarea id="areainput" name="areainput"></textarea>
+</div>
+
+<!-- Mots-clés générés -->
+<div>
+	<label for="areakeywords"><b>Keywords</b></label>
+	<textarea id="areakeywords" name="areakeywords" readonly></textarea>
+</div>
+    
+    
+</body>
+</html>
