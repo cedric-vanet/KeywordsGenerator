@@ -1,12 +1,12 @@
 /*
-	Keywords plugin for jQuery
+	keywordsGenerator plugin for jQuery
 	Copyright (c) 2013 Cedric Vanet (cedric-vanet.fr)
 	Version: 0.1
 */
 
 (function($)
 { 
-    $.fn.keywords=function(options)
+    $.fn.keywordsgenerator=function(options)
     {
     
        //Paramètres par defaut
@@ -41,19 +41,19 @@
 	        	
 						//Si le parametre tag ne vaut pas null alors recupere tous les chaines présentes dans le texte avec ce type de tag, sinon recupere toutes le texte en intégralité
 						if(parametres.tag){ 
-							tabstrings = keywords_striptag(text, parametres.tag);
+							tabstrings = keywordsgenerator_striptag(text, parametres.tag);
 						}else{
 							if(text != ""){ tabstrings[0] = text; }
 							else{ tabstrings = null; }
 						}
 						
 						//Supprime les balises qui peuvent être présente dans les chaines du tableau
-						tabstrings = keywords_striphtml(tabstrings);
+						tabstrings = keywordsgenerator_striphtml(tabstrings);
 						
 						if(tabstrings != null){
 							
 							//Traitement des chaines et extraction des mots
-							tabwords = keywords_stripword(tabstrings, parametres.min, parametres.max, parametres.words);
+							tabwords = keywordsgenerator_stripword(tabstrings, parametres.min, parametres.max, parametres.words);
 							
 							//Convertir le tableau en chaine de caractere en séparant les cellules avec un ";"
 							var nb_words = tabwords.length;
@@ -85,7 +85,7 @@
 })(jQuery);
 
 
-function keywords_stripword(tab, min, max, words){
+function keywordsgenerator_stripword(tab, min, max, words){
 	
 	//Initialise les variables
 	var tabwords = new Array(), tabtemp = new Array();
@@ -110,15 +110,15 @@ function keywords_stripword(tab, min, max, words){
 				if(regex.test(tabtemp[w])) {
 					
 					//Création d'une copie du mot sans accent
-					var new_word = keywords_del_accent(tabtemp[w]);
+					var new_word = keywordsgenerator_del_accent(tabtemp[w]);
 					
 					//Vérifie si le mot-clé existe déjà, sinon l'ajoute
-					if(!keywords_array_search(tabwords, new_word)){ tabwords.push(new_word); }
+					if(!keywordsgenerator_array_search(tabwords, new_word)){ tabwords.push(new_word); }
 					
 				};
 							
 				//Vérifie si le mot-clé existe déjà, sinon l'ajoute
-				if(!keywords_array_search(tabwords, tabtemp[w])){ tabwords.push(tabtemp[w]); }
+				if(!keywordsgenerator_array_search(tabwords, tabtemp[w])){ tabwords.push(tabtemp[w]); }
 				
 			}
 			
@@ -133,7 +133,7 @@ function keywords_stripword(tab, min, max, words){
 
 
 //Découpe un text pour récupérer sous forme de tableau les éléments contenu dans un tag spécifiques
-function keywords_striptag(text, tag){
+function keywordsgenerator_striptag(text, tag){
 	
 	//Recompose le tag
 	var tagstart = "<"+tag+">";
@@ -173,7 +173,7 @@ function keywords_striptag(text, tag){
 
 
 //Supprimer dans les valeur d'un tableau les balises html éventuelles
-function keywords_striphtml(tab){
+function keywordsgenerator_striphtml(tab){
 
 	var regex = new RegExp("(<([^>]+)>)", "gi");
 	var temp = new String();
@@ -185,7 +185,7 @@ function keywords_striphtml(tab){
 			temp = new String(tab[i]);
 			
 			//Passe la chaine en minuscule
-			temp = keywords_lowercase(temp);
+			temp = keywordsgenerator_lowercase(temp);
 			
 			//Supprime les tags html
 			tab[i] = temp.replace(regex, ""); 
@@ -197,7 +197,7 @@ function keywords_striphtml(tab){
 }
 
 //Recherche dans un tableau l'occurence demande
-function keywords_array_search(tab, value){
+function keywordsgenerator_array_search(tab, value){
 	
 	//Parcours les chaines envoyés
 	for(var i = 0, taille = tab.length; i < taille; i++){
@@ -210,11 +210,11 @@ function keywords_array_search(tab, value){
 
 
 //Supprime les accents d'une chaine
-function keywords_del_accent(value){ 
+function keywordsgenerator_del_accent(value){ 
 	
 	var new_value = "", pattern_accent = new Array("à", "á", "â", "ã", "ä", "å", "ç", "è", "é", "ê", "ë", "ì", "í", "î", "ï", "ð", "ò", "ó", "ô", "õ", "ö", "ù", "ú", "û", "ü", "ý", "ÿ"), pattern_replace_accent = new Array("a", "a", "a", "a", "a", "a", "c", "e", "e", "e", "e", "i", "i", "i", "i", "o", "o", "o", "o", "o", "o", "u", "u", "u", "u", "y", "y"); 
 	
-	if (value && value != "") { new_value = keywords_preg_replace(pattern_accent, pattern_replace_accent, value); } 
+	if (value && value != "") { new_value = keywordsgenerator_preg_replace(pattern_accent, pattern_replace_accent, value); } 
 	
 	//Retourne la chaine sans accent
 	return new_value;
@@ -223,7 +223,7 @@ function keywords_del_accent(value){
 
 		
 //Remplacement de caractère dans une chaine
-function keywords_preg_replace(array_pattern, array_pattern_replace, value){
+function keywordsgenerator_preg_replace(array_pattern, array_pattern_replace, value){
 	
 	var new_value = String(value); 
 	
@@ -241,6 +241,6 @@ function keywords_preg_replace(array_pattern, array_pattern_replace, value){
 }
 
 //Retourne une chaine en miniscule
-function keywords_lowercase(text){
+function keywordsgenerator_lowercase(text){
 	return text.toLowerCase(); 
 }
