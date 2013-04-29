@@ -1,14 +1,14 @@
 
-<!DOCTYPE>
+<!DOCTYPE html> 
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
 
 <!-- Balise HEAD -->
 <head>
     
 <!-- Titre de la page -->
-<title>Keywords</title>
+<title>Keywords Generator | cedric-vanet.fr</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -16,16 +16,16 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
 <!-- Declaration du plugin Keywords -->
-<script type="text/javascript" src="keywords/jquery.keywords.min.js"></script>
+<script type="text/javascript" src="keywords/jquery.keywordsgenerator.min.js"></script>
     
 </head>
 
 <!-- Javascript -->
 <script>
-  
+	
     $(function() {
 
-			$("#areainput").keywords({ attachto: $("#areakeywords"), tag: "b" });
+			$("#areainput").keywordsgenerator({ attachto: $("#areakeywords"), tag: "b" });
 			
 			//Options par defaut :
       // min: 4 - Nombre minimum de caractères pour le mot clé
