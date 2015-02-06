@@ -1,6 +1,6 @@
 /*
 	keywordsGenerator plugin for jQuery
-	Copyright (c) 2013 Cedric Vanet (cedric-vanet.fr)
+	Cedric Vanet (dev@cedvan.com)
 	Version: 0.1
 */
 
